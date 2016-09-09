@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
 
 
@@ -11,7 +11,7 @@ def hello_world():
 
 @app.route('/about')
 def about():
-    return 'pastes for all :)'
+    return render_template('base.html', content="pastes for all :)")
 
 
 def main():
