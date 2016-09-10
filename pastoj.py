@@ -30,7 +30,7 @@ def main():
     if cmd_args.debug_mode:
         app_options["debug"] = True
         app_options["use_debugger"] = False
-        app_options["use_reloader"] = False
+        # app_options["use_reloader"] = False
 
     app.run(**app_options)
 
