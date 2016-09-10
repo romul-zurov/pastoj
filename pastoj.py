@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 class YourFlask(Flask):
@@ -10,12 +10,14 @@ class YourFlask(Flask):
         return Flask.create_jinja_environment(self)
 app = YourFlask(__name__)
 # app = Flask(__name__)
-
 app.jinja_env.line_statement_prefix = '%'
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
+    if request.method == "POST":
+        paste_text = request.form['paste_text']
+        return render_template('base.html', raw_content=paste_text)
     return render_template('index.html')
 
 
